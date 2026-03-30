@@ -1,3 +1,4 @@
+import java.awt.*;
 import javax.swing.*;
 
 public class Inicio {
@@ -10,40 +11,67 @@ public class Inicio {
     public Inicio() {
 
         ventana = new JFrame("Login");
-        ventana.setSize(400, 300);
-        ventana.setLayout(null);
+        ventana.setSize(1300, 900);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        ventana.setLocationRelativeTo(null);
 
-        // Usuario
+        // Panel principal centrado
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridBagLayout());
+
+        // FORMULARIO con control total
+        JPanel formulario = new JPanel();
+        formulario.setLayout(new GridBagLayout());
+
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(15, 15, 15, 15);
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+
+        // Usuario label
+        gbc.gridx = 0;
+        gbc.gridy = 0;
         JLabel lblUser = new JLabel("Usuario:");
-        lblUser.setBounds(50, 50, 100, 30);
-        ventana.add(lblUser);
+        lblUser.setFont(new Font("Arial", Font.BOLD, 18));
+        formulario.add(lblUser, gbc);
 
-        usuario = new JTextField();
-        usuario.setBounds(150, 50, 150, 30);
-        ventana.add(usuario);
+        // Usuario campo
+        gbc.gridx = 1;
+        usuario = new JTextField(15);
+        usuario.setPreferredSize(new Dimension(300, 45));
+        usuario.setFont(new Font("Arial", Font.PLAIN, 18));
+        formulario.add(usuario, gbc);
 
-        // Contraseña
+        // Contraseña label
+        gbc.gridx = 0;
+        gbc.gridy = 1;
         JLabel lblPass = new JLabel("Contraseña:");
-        lblPass.setBounds(50, 100, 100, 30);
-        ventana.add(lblPass);
+        lblPass.setFont(new Font("Arial", Font.BOLD, 18));
+        formulario.add(lblPass, gbc);
 
-        contraseña = new JPasswordField();
-        contraseña.setBounds(150, 100, 150, 30);
-        ventana.add(contraseña);
+        // Contraseña campo
+        gbc.gridx = 1;
+        contraseña = new JPasswordField(15);
+        contraseña.setPreferredSize(new Dimension(300, 45));
+        contraseña.setFont(new Font("Arial", Font.PLAIN, 18));
+        formulario.add(contraseña, gbc);
 
         // Botón
+        gbc.gridx = 1;
+        gbc.gridy = 2;
         boton = new JButton("Entrar");
-        boton.setBounds(130, 160, 120, 40);
-        ventana.add(boton);
+        boton.setPreferredSize(new Dimension(150, 45));
+        boton.setFont(new Font("Arial", Font.BOLD, 16));
+        formulario.add(boton, gbc);
 
-        // Evento (AQUÍ ESTÁ LA LÓGICA)
+        panel.add(formulario);
+        ventana.add(panel);
+
+        // Evento
         boton.addActionListener(e -> validarLogin());
 
         ventana.setVisible(true);
     }
 
-    // MÉTODO PARA VALIDAR
     public void validarLogin() {
 
         String user = usuario.getText();
