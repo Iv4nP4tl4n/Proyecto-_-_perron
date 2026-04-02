@@ -10,7 +10,7 @@ public class Inicio {
 
     public Inicio() {
 
-        ventana = new JFrame("Login");
+        ventana = new JFrame("Inicio");
         ventana.setSize(1300, 900);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ventana.setLocationRelativeTo(null);
@@ -19,7 +19,7 @@ public class Inicio {
         JPanel panel = new JPanel();
         panel.setLayout(new GridBagLayout());
 
-        // FORMULARIO con control total
+        // FORMULARIO
         JPanel formulario = new JPanel();
         formulario.setLayout(new GridBagLayout());
 
@@ -27,28 +27,26 @@ public class Inicio {
         gbc.insets = new Insets(15, 15, 15, 15);
         gbc.fill = GridBagConstraints.HORIZONTAL;
 
-        // Usuario label
+        // Usuario
         gbc.gridx = 0;
         gbc.gridy = 0;
         JLabel lblUser = new JLabel("Usuario:");
         lblUser.setFont(new Font("Arial", Font.BOLD, 18));
         formulario.add(lblUser, gbc);
 
-        // Usuario campo
         gbc.gridx = 1;
         usuario = new JTextField(15);
         usuario.setPreferredSize(new Dimension(300, 45));
         usuario.setFont(new Font("Arial", Font.PLAIN, 18));
         formulario.add(usuario, gbc);
 
-        // Contraseña label
+        // Contraseña
         gbc.gridx = 0;
         gbc.gridy = 1;
         JLabel lblPass = new JLabel("Contraseña:");
         lblPass.setFont(new Font("Arial", Font.BOLD, 18));
         formulario.add(lblPass, gbc);
 
-        // Contraseña campo
         gbc.gridx = 1;
         contraseña = new JPasswordField(15);
         contraseña.setPreferredSize(new Dimension(300, 45));
@@ -72,13 +70,18 @@ public class Inicio {
         ventana.setVisible(true);
     }
 
+    // 🔥 AQUÍ ESTÁ LA MAGIA
     public void validarLogin() {
 
         String user = usuario.getText();
         String pass = new String(contraseña.getPassword());
 
-        if (user.equals("admin") && pass.equals("1234")) {
+        if (user.equals("ivan") && pass.equals("1234")) {
             JOptionPane.showMessageDialog(null, "Bienvenido");
+
+            ventana.dispose(); // 🔥 cierra esta ventana
+            new Indice();      // 🔥 abre la otra (tu menú)
+
         } else {
             JOptionPane.showMessageDialog(null, "Datos incorrectos");
         }
