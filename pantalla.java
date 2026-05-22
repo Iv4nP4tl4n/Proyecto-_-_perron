@@ -13,13 +13,12 @@ public class pantalla {
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ventana.setLocationRelativeTo(null);
 
-        // 🔥 CARGAR Y ESCALAR IMAGEN (más chica)
         ImageIcon fondoOriginal = new ImageIcon(getClass().getResource("/Logo de proyecto + perron.png"));
         Image imagen = fondoOriginal.getImage().getScaledInstance(1200, 700, Image.SCALE_SMOOTH);
         ImageIcon fondoImg = new ImageIcon(imagen);
 
         JLabel fondo = new JLabel(fondoImg);
-        fondo.setLayout(new GridBagLayout()); // para posicionar
+        fondo.setLayout(new GridBagLayout()); 
 
         // CONFIGURACIÓN GRID
         GridBagConstraints gbc = new GridBagConstraints();
@@ -33,7 +32,7 @@ public class pantalla {
 
         // POSICIÓN: ABAJO
         gbc.gridy = 1; // debajo de la imagen
-        gbc.insets = new Insets(200, 0, 50, 0); // empuja hacia abajo
+        gbc.insets = new Insets(200, 0, 50, 0); 
 
         fondo.add(entrar, gbc);
 

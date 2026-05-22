@@ -2,14 +2,14 @@
 import java.awt.*;
 import javax.swing.*;
 
-public class Indice {
+public class Indice_Emp {
     JFrame ventanaIn;
     JButton ventas;
     JButton inventario;
-    JButton compra;
+    JButton productos;
     JButton regresar;
 
-    public Indice(){
+    public Indice_Emp(){
 
         ventanaIn = new JFrame("Indice");
         ventanaIn.setSize(1300, 900);
@@ -35,11 +35,11 @@ public class Indice {
         inventario.setFont(new Font("Arial", Font.BOLD, 16));
         inventario.setFocusPainted(false);
 
-        // BOTÓN COMPRA
-        compra = new JButton("Compra");
-        compra.setPreferredSize(new Dimension(200, 50));
-        compra.setFont(new Font("Arial", Font.BOLD, 16));
-        compra.setFocusPainted(false);
+        // BOTÓN PRODUCTOS
+        productos = new JButton("Productos");
+        productos.setPreferredSize(new Dimension(200, 50));
+        productos.setFont(new Font("Arial", Font.BOLD, 16));
+        productos.setFocusPainted(false);
 
         // BOTÓN REGRESAR
         regresar = new JButton("Regresar");
@@ -50,8 +50,9 @@ public class Indice {
         // AGREGAR BOTONES CENTRADOS
         ventanaIn.add(ventas, gbc);
         ventanaIn.add(inventario, gbc);
-        ventanaIn.add(compra, gbc);
+        ventanaIn.add(productos, gbc);
         ventanaIn.add(regresar, gbc);
+        
 
         // EVENTOS
         ventas.addActionListener(e -> {
@@ -59,10 +60,11 @@ public class Indice {
         });
 
         inventario.addActionListener(e -> {
-            
+            ventanaIn.dispose();
+            new inventario();
         });
 
-        compra.addActionListener(e -> {
+        productos.addActionListener(e -> {
 
         });
 
@@ -75,6 +77,6 @@ public class Indice {
     }
 
     public static void main(String[] args) {
-        new Indice();
+        new Indice_Adm();
     }
 }

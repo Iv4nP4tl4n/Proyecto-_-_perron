@@ -6,7 +6,8 @@ public class Inicio {
     JFrame ventana;
     JTextField usuario;
     JPasswordField contraseña;
-    JButton boton;
+    JButton confirmar;
+    JButton regresar;
 
     public Inicio() {
 
@@ -53,24 +54,41 @@ public class Inicio {
         contraseña.setFont(new Font("Arial", Font.PLAIN, 18));
         formulario.add(contraseña, gbc);
 
-        // Botón
-        gbc.gridx = 1;
+        // 🔥 Panel para botones (mejor diseño)
+        JPanel panelBotones = new JPanel();
+
+        confirmar = new JButton("Entrar");
+        confirmar.setPreferredSize(new Dimension(150, 45));
+        confirmar.setFont(new Font("Arial", Font.BOLD, 16));
+
+        regresar = new JButton("Regresar");
+        regresar.setPreferredSize(new Dimension(150,45));
+        regresar.setFont(new Font("Arial", Font.BOLD, 16));
+
+        panelBotones.add(regresar);
+        panelBotones.add(confirmar);
+
+        gbc.gridx = 0;
         gbc.gridy = 2;
-        boton = new JButton("Entrar");
-        boton.setPreferredSize(new Dimension(150, 45));
-        boton.setFont(new Font("Arial", Font.BOLD, 16));
-        formulario.add(boton, gbc);
+        gbc.gridwidth = 2;
+        formulario.add(panelBotones, gbc);
 
         panel.add(formulario);
         ventana.add(panel);
 
-        // Evento
-        boton.addActionListener(e -> validarLogin());
+        // Evento Entrar
+        confirmar.addActionListener(e -> validarLogin());
+
+        // Evento Regresar 
+        regresar.addActionListener(e -> {
+            ventana.dispose();
+            new pantalla();
+        });
 
         ventana.setVisible(true);
     }
 
-    // 🔥 AQUÍ ESTÁ LA MAGIA
+    // Validación
     public void validarLogin() {
 
         String user = usuario.getText();
@@ -79,8 +97,8 @@ public class Inicio {
         if (user.equals("ivan") && pass.equals("1234")) {
             JOptionPane.showMessageDialog(null, "Bienvenido");
 
-            ventana.dispose(); // 🔥 cierra esta ventana
-            new Indice();      // 🔥 abre la otra (tu menú)
+            ventana.dispose();
+            new Indice_Adm();
 
         } else {
             JOptionPane.showMessageDialog(null, "Datos incorrectos");
